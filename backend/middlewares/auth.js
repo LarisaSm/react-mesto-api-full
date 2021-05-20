@@ -1,5 +1,6 @@
 // middlewares/auth.js
 const jwt = require('jsonwebtoken');
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 const UnauthorizedError = require('../errors/UnauthorizedError');
 const ForbiddenError = require('../errors/ForbiddenError');
@@ -14,7 +15,7 @@ module.exports = (req, res, next) => {
   let payload;
 
   try {
-    payload = jwt.verify(token, 'some-secret-key');
+    payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
   } catch (err) {
     throw new ForbiddenError('Нет доступа');
   }
