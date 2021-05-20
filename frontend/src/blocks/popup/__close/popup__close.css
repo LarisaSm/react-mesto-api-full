@@ -1,0 +1,41 @@
+.popup__close {
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  background-image: url(../../../images/popup__close.svg);
+  height: 40px;
+  width: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 0;
+  position: absolute;
+  top: -45px;
+  right: -45px;
+  transition: opacity 2s ease;
+}
+
+.popup__close:focus {
+  outline: none;
+}
+
+.popup__close:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 690px) {
+  .popup__close {
+    height: 32px;
+    width: 32px;
+    top: -35px;
+    right: -35px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .popup__close {
+    top: -25px;
+    right: -25px;
+    background-size: cover;
+  }
+}

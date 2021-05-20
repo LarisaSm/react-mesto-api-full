@@ -1,0 +1,21 @@
+.auth__register-link {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.auth__register-link:focus {
+  outline: none;
+}
+
+.auth__register-link:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}

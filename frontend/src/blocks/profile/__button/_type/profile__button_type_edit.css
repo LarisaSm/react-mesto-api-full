@@ -1,0 +1,17 @@
+.profile__button_type_edit {
+  border: 1px solid #FFFFFF;
+  width: 24px;
+  height: 24px;
+  background-image: url(../../../../images/profile__info__edit.svg);
+}
+
+.profile__button_type_edit:hover {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+@media screen and (max-width: 450px) {
+  .profile__button_type_edit {
+    width: 18px;
+    height: 18px;
+  }
+}

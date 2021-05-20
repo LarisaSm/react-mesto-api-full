@@ -1,0 +1,17 @@
+.element__img {
+  width: 282px;
+  height: 282px;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 25px;
+  border-radius: 10px 10px 0px 0px;
+  min-width: 282px;
+  min-height: 282px;
+  transition: opacity 2s ease;
+
+}
+
+.element__img:hover {
+    cursor: pointer;
+    opacity: 0.6; 
+}

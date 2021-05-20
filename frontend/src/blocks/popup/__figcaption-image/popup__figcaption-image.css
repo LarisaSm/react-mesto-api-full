@@ -1,0 +1,9 @@
+.popup__figcaption-image {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ffffff;
+  margin-top: 10px;
+  align-self: start;
+}

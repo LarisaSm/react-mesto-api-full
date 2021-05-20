@@ -1,0 +1,39 @@
+.auth__input {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+
+  font-weight: 500;
+
+  color: #ffffff;
+  width: 358px;
+  height: 27px;
+  outline: none;
+  border: 0;
+  background-color: inherit;
+  border-bottom: 2px solid #cccccc;
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.2); */
+  margin-bottom: 30px;
+  /* margin-top: 30px; */
+}
+
+.auth__input:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 690px) {
+  .auth__input {
+    font-size: 14px;
+    line-height: 17px;
+    width: 83%;
+    margin-bottom: 24px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .auth__input {
+    margin-bottom: 20px;
+  }
+}

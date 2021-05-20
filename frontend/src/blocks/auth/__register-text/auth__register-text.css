@@ -1,0 +1,13 @@
+.auth__register-text {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+  margin-bottom: 30px;
+  text-align: center;
+  display: block;
+  color: #ffffff;
+  margin: auto;
+}

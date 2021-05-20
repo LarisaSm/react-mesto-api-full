@@ -1,0 +1,13 @@
+.header__link_signout {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height, or 122% */
+  border: none;
+  background-color: inherit;
+  text-align: right;
+
+  color: #a9a9a9;
+}
