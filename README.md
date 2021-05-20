@@ -4,3 +4,6 @@
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
 Адрес сайта: https://15dev.students.nomoredomains.club/
+
+Адрес api: api.15dev.students.nomoredomains.icu
+
