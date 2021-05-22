@@ -294,6 +294,7 @@ function App() {
   }
 
   function tokenCheck () {
+    console.log("token check");
     // если у пользователя есть токен в localStorage,
     // эта функция проверит валидность токена
     const jwt = localStorage.getItem("jwt");
