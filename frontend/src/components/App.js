@@ -297,13 +297,11 @@ function App() {
     // если у пользователя есть токен в localStorage,
     // эта функция проверит валидность токена
     const jwt = localStorage.getItem("jwt");
-    console.log(jwt);
     if (jwt) {
       // проверим токен
       auth
         .getContent(jwt)
         .then((res) => {
-          console.log(res);
           if (res) {
             // авторизуем пользователя
             setLoggedIn(true);
