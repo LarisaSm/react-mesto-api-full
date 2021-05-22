@@ -71,6 +71,7 @@ app.use(errorLogger); // подключаем логгер ошибок
 app.use(errorLogger); // подключаем логгер ошибок
 
 app.use(errors());
+
 app.use((err, req, res, next) => {
   // это обработчик ошибки
   // если у ошибки нет статуса, выставляем 500

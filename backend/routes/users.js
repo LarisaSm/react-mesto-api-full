@@ -1,7 +1,7 @@
 // router.js
 const express = require('express');
+const { celebrate, Joi } = require('celebrate');
 const auth = require('../middlewares/auth');
-// const { celebrate, Joi } = require('celebrate');
 
 const userRouter = express.Router();
 
@@ -16,9 +16,18 @@ const {
 userRouter.get('/users', auth, getUsers);
 userRouter.get('/users/me', auth, getUsersMe);
 userRouter.get('/users/:userId', auth, getUsersId);
-userRouter.patch('/users/me', auth, updateUser);
+userRouter.patch('/users/me', auth, celebrate({
+  body: Joi.object().keys({
+    name: Joi.string().required().min(2).max(30),
+    about: Joi.string().required().min(2),
+  }),
+}), updateUser);
 
-userRouter.patch('/users/me/avatar', auth, updateAvatarUser);
+userRouter.patch('/users/me/avatar', auth, celebrate({
+  body: Joi.object().keys({
+    avatar: Joi.string().required(),
+  }),
+}), updateAvatarUser);
 // userRouter.get('*', express.json(), pageNotFound);
 
 // router.get('/', (req, res) => {
