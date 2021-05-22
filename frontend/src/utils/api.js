@@ -8,8 +8,8 @@
 //       this._headers = config.headers;
 //   }
 
-// const URL = "http://localhost:3000/";
-const URL = "https://api.15dev.students.nomoredomains.icu/";
+const URL = "http://localhost:3005/";
+// const URL = "https://api.15dev.students.nomoredomains.icu/";
 
 
 
@@ -22,7 +22,7 @@ export function getInitialCards(headers) {
 
   })
       .then(res => returnData(res));
-  } 
+  }
 
   export function addNewCard (name, link, headers) {
     return fetch(URL + 'cards', {
@@ -33,7 +33,7 @@ export function getInitialCards(headers) {
       },
       body: JSON.stringify({
         name: name,
-        link: link 
+        link: link
       })
     })
     .then((res) => {
@@ -49,12 +49,12 @@ export function editUserInfo (name, about, headers) {
     },
     body: JSON.stringify({
       name: name,
-      about: about 
+      about: about
     })
   })
   .then((res) => returnData(res));
 }
-  
+
 export function getUserInfo (headers) {
     return fetch(URL + 'users/me', {
       headers: {
@@ -78,7 +78,7 @@ export function getUserInfo (headers) {
 
 
   export  function likeCard(id,headers) {
-    return fetch(URL + `cards/likes/${id}`, {
+    return fetch(URL + `cards/${id}/likes`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${headers}`,
@@ -88,7 +88,7 @@ export function getUserInfo (headers) {
   }
 
   export function deleteLikeCard(id, headers) {
-    return fetch(URL + `cards/likes/${id}`, {
+    return fetch(URL + `cards/${id}/likes`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${headers}`,
@@ -98,7 +98,7 @@ export function getUserInfo (headers) {
   }
 
   export function getLikesCard(id, headers) {
-    return fetch(URL + `cards/likes/${id}`, {
+    return fetch(URL + `cards/${id}/likes`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${headers}`,
@@ -115,7 +115,7 @@ export function getUserInfo (headers) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        avatar: avatar 
+        avatar: avatar
       })
     })
     .then((res) => returnData(res));
@@ -137,11 +137,11 @@ function returnData (res) {
 // 		authorization: '4b126959-9593-4c1c-9c1d-30d3e8eeddbf',
 //     "content-type": "application/json",
 //   }
-// }); 
+// });
 
 // const api = new Api({
 //   url: "http://localhost:3005/",
 //   headers: {
 //         "content-type": "application/json"
 //       }
-// }); 
+// });

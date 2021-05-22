@@ -1,12 +1,13 @@
 // cards.js
 const express = require('express');
+const { celebrate, Joi } = require('celebrate');
+
 const auth = require('../middlewares/auth');
 
 const cardRouter = express.Router();
 const {
   getCards,
   createCard,
-  getCardId,
   likeCard,
   dislikeCard,
   deleteCard,
@@ -15,15 +16,27 @@ const {
 
 cardRouter.get('/cards', auth, getCards);
 
-cardRouter.get('/cards/:cardId', auth, getCardId);
-
 cardRouter.post('/cards', auth, createCard);
 
-cardRouter.put('/cards/likes/:cardId', auth, likeCard);
+cardRouter.put('/cards/:cardId/likes', auth, celebrate({
+  params: Joi.object().keys({
+    cardId: Joi.string().hex().length(24),
+  }),
+}),
+likeCard);
 
-cardRouter.delete('/cards/likes/:cardId', auth, dislikeCard);
+cardRouter.delete('/cards/:cardId/likes', auth, celebrate({
+  params: Joi.object().keys({
+    cardId: Joi.string().hex().length(24),
+  }),
+}),
+dislikeCard);
 
-cardRouter.delete('/cards/:cardId', auth, deleteCard);
+cardRouter.delete('/cards/:cardId', auth, celebrate({
+  params: Joi.object().keys({
+    cardId: Joi.string().hex().length(24),
+  }),
+}), deleteCard);
 
 cardRouter.get('*', pageNotFound);
 cardRouter.post('*', pageNotFound);

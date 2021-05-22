@@ -12,22 +12,22 @@ exports.getCards = (req, res, next) => {
     .catch(next);
 };
 
-exports.getCardId = (req, res, next) => {
-  Card.findById(req.params.cardId)
-    .then((card) => {
-      if (!card) {
-        throw new NotFoundError('Карточки с таким id не существует');
-      }
-      res.send(card);
-    })
-    .catch((err) => {
-      if (err.name === 'CastError') {
-        throw new ValidationError('Введены некорректные данные');
-      }
-      next(err);
-    })
-    .catch(next);
-};
+// exports.getCardId = (req, res, next) => {
+//   Card.findById(req.params.cardId)
+//     .then((card) => {
+//       if (!card) {
+//         throw new NotFoundError('Карточки с таким id не существует');
+//       }
+//       res.send(card);
+//     })
+//     .catch((err) => {
+//       if (err.name === 'CastError') {
+//         throw new ValidationError('Введены некорректные данные');
+//       }
+//       next(err);
+//     })
+//     .catch(next);
+// };
 
 exports.createCard = (req, res, next) => {
   const { name, link } = req.body;

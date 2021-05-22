@@ -294,7 +294,6 @@ function App() {
   }
 
   function tokenCheck () {
-    console.log("token check");
     // если у пользователя есть токен в localStorage,
     // эта функция проверит валидность токена
     const jwt = localStorage.getItem("jwt");
@@ -324,7 +323,6 @@ function App() {
   }
 
   React.useEffect(() => {
-    console.log("use effect 1");
     setIsLoading(true);
     tokenCheck();
     getInitialCards(currentUserHeaders)
@@ -346,7 +344,6 @@ function App() {
   }, []);
 
   React.useEffect(() => {
-    console.log("use effect 2");
 
     getUserInfo(currentUserHeaders)
     .then((res) => {
@@ -358,7 +355,6 @@ function App() {
 }, [currentUserHeaders]);
 
 React.useEffect(() => {
-  console.log("use effect 3");
 
   getInitialCards(currentUserHeaders)
   .then((res) => {
