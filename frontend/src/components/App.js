@@ -309,7 +309,7 @@ function App() {
             // setUserData({ email: res.data.email });
             setСurrentUser({ email: res.email });
             setCurrentUserHeaders(jwt);
-            
+
             // обернём App.js в withRouter
             // так, что теперь есть доступ к этому методу
             history.push("/");
@@ -341,6 +341,36 @@ function App() {
         console.log(err); // выведем ошибку в консоль
       });
   }, []);
+
+  React.useEffect(() => {
+    getUserInfo(currentUserHeaders)
+    .then((res) => {
+      setСurrentUser(res);
+    })
+    .catch((err) => {
+      console.log(err); // выведем ошибку в консоль
+    });
+}, [currentUserHeaders]);
+
+React.useEffect(() => {
+  getInitialCards(currentUserHeaders)
+  .then((res) => {
+    setCards(
+        res.map((item) => ({
+          src: item.link,
+          nameImg: item.name,
+          like: item.likes,
+          cardId: item._id,
+          ownerId: item.owner,
+        }))
+      );
+      setIsLoading(false);
+  })
+  .catch((err) => {
+    console.log(err); // выведем ошибку в консоль
+  });
+}, [currentUserHeaders]);
+
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
