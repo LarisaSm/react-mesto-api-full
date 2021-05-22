@@ -289,6 +289,7 @@ function App() {
   }
 
   function signOut() {
+    console.log("signOUT!!!!");
     localStorage.removeItem("jwt");
     history.push("/sign-in");
   }
