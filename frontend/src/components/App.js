@@ -322,6 +322,7 @@ function App() {
   }
 
   React.useEffect(() => {
+    console.log("use effect 1");
     setIsLoading(true);
     tokenCheck();
     getInitialCards(currentUserHeaders)
@@ -343,6 +344,8 @@ function App() {
   }, []);
 
   React.useEffect(() => {
+    console.log("use effect 2");
+
     getUserInfo(currentUserHeaders)
     .then((res) => {
       setСurrentUser(res);
@@ -353,6 +356,8 @@ function App() {
 }, [currentUserHeaders]);
 
 React.useEffect(() => {
+  console.log("use effect 3");
+
   getInitialCards(currentUserHeaders)
   .then((res) => {
     setCards(
