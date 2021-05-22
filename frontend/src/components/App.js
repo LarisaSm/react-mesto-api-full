@@ -289,7 +289,6 @@ function App() {
   }
 
   function signOut() {
-    console.log("signOUT!!!!");
     localStorage.removeItem("jwt");
     history.push("/sign-in");
   }
@@ -299,6 +298,7 @@ function App() {
     // если у пользователя есть токен в localStorage,
     // эта функция проверит валидность токена
     const jwt = localStorage.getItem("jwt");
+    console.log(jwt);
     if (jwt) {
       // проверим токен
       auth
