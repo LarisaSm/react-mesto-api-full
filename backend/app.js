@@ -2,6 +2,8 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
 const mongoose = require('mongoose');
+const { celebrate, Joi } = require('celebrate');
+const { errors } = require('celebrate');
 
 // Слушаем 3000 порт
 const { PORT = 3000 } = process.env;
@@ -42,10 +44,20 @@ app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
-}); 
+});
 
-app.post('/signin', login);
-app.post('/signup', createUser);
+app.post('/signin', celebrate({
+  body: Joi.object().keys({
+    password: Joi.string().required().min(2).max(30),
+    email: Joi.string().email().required().min(2),
+  }),
+}), login);
+app.post('/signup', celebrate({
+  body: Joi.object().keys({
+    password: Joi.string().required().min(2).max(30),
+    email: Joi.string().email().required().min(2),
+  }).unknown(true),
+}), createUser);
 
 // app.use(auth);
 
@@ -58,6 +70,7 @@ app.use(errorLogger); // подключаем логгер ошибок
 
 app.use(errorLogger); // подключаем логгер ошибок
 
+app.use(errors());
 app.use((err, req, res, next) => {
   // это обработчик ошибки
   // если у ошибки нет статуса, выставляем 500

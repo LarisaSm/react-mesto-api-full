@@ -1,5 +1,7 @@
 const bcrypt = require('bcryptjs');
+
 const jwt = require('jsonwebtoken');
+
 const { NODE_ENV, JWT_SECRET } = process.env;
 const { User } = require('../models/user');
 const NotFoundError = require('../errors/NotFoundError');
@@ -37,10 +39,6 @@ exports.createUser = (req, res, next) => {
   // const {
   //   name, about, avatar, email, password,
   // } = req.body;
-  console.log(req.body.password);
-  if (req.body.password === undefined || req.body.email === undefined || typeof req.body.password !== 'string') {
-    throw new ValidationError('Необходимо заполнить обязательные поля');
-  }
   bcrypt.hash(req.body.password, 10)
     .then((hash) => User.create({
       name: req.body.name,
@@ -134,11 +132,6 @@ exports.pageNotFound = () => {
 
 exports.login = (req, res, next) => {
   const { email, password } = req.body;
-
-  const regexEmail = /\w+@\w+\.\w+/;
-  if (req.body.password === undefined || req.body.email === undefined || typeof req.body.password !== 'string' || !regexEmail.test(req.body.email)) {
-    throw new ValidationError('Необходимо корректно заполнить пароль и емейл');
-  }
 
   return User.findUserByCredentials(email, password)
     .then((user) => {
