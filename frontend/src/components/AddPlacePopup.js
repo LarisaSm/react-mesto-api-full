@@ -16,6 +16,14 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoadingPopup }) {
   function handleSubmit(e) {
     e.preventDefault();
     onAddPlace({ name: inputCardName, link: inputCardLink });
+    setInputCardLink('');
+    setInputCardName('');
+  }
+
+  function handleClose() {
+    setInputCardLink('');
+    setInputCardName('');
+    onClose();
   }
 
   return (
@@ -24,7 +32,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoadingPopup }) {
       title="Новое место"
       formId="add-card"
       isOpen={isOpen}
-      onClose={onClose}
+      onClose={handleClose}
       onSubmit={(e) => handleSubmit(e)}
       isLoadingPopup={isLoadingPopup}
     >
