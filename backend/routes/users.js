@@ -1,6 +1,7 @@
 // router.js
 const express = require('express');
 const { celebrate, Joi } = require('celebrate');
+const validator = require('validator');
 const auth = require('../middlewares/auth');
 
 const userRouter = express.Router();
@@ -20,16 +21,22 @@ userRouter.get('/users/:userId', auth, celebrate({
     userId: Joi.string().hex().length(24),
   }),
 }), getUsersId);
+
 userRouter.patch('/users/me', auth, celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
-    about: Joi.string().required().min(2),
+    about: Joi.string().required().min(2).max(30),
   }),
 }), updateUser);
 
 userRouter.patch('/users/me/avatar', auth, celebrate({
   body: Joi.object().keys({
-    avatar: Joi.string().required(),
+    avatar: Joi.string().required().custom((value, helpers) => {
+      if (validator.isURL(value, { require_protocol: true })) {
+        return value;
+      }
+      return helpers.message('Невалидная ссылка');
+    }),
   }),
 }), updateAvatarUser);
 // userRouter.get('*', express.json(), pageNotFound);

@@ -1,6 +1,7 @@
 const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
+const validator = require('validator');
 const mongoose = require('mongoose');
 const { celebrate, Joi } = require('celebrate');
 const { errors } = require('celebrate');
@@ -52,11 +53,20 @@ app.post('/signin', celebrate({
     email: Joi.string().email().required().min(2),
   }),
 }), login);
+
 app.post('/signup', celebrate({
   body: Joi.object().keys({
     password: Joi.string().required().min(2).max(30),
     email: Joi.string().email().required().min(2),
-  }).unknown(true),
+    avatar: Joi.string().custom((value, helpers) => {
+      if (validator.isURL(value, { require_protocol: true })) {
+        return value;
+      }
+      return helpers.message('Невалидная ссылка');
+    }),
+    name: Joi.string().min(2).max(30),
+    about: Joi.string().min(2).max(30),
+  }),
 }), createUser);
 
 // app.use(auth);
