@@ -1,6 +1,6 @@
 # Бэкенд проекта Mesto
 
-Начать работу
+### Начать работу
 1. Перейдите в директорию
 ```
 cd backend
@@ -20,6 +20,7 @@ mongod
 ```
 # запуск в production режиме
 npm run start
+
 # запуск в dev режиме, c функцией hot-reload
 npm run dev
 ```
@@ -30,6 +31,7 @@ npm run dev
 ```
 # создание пользователя
 POST /signup
+
 # вход в систему
 POST /signin 
 ```
@@ -58,7 +60,7 @@ POST /cards
 DELETE /cards/cardId
 
 # добавление лайка карточке
-PUT /cards/cardId//likes
+PUT /cards/cardId/likes
 
 # удаление лайка 
 DELETE /cards/cardId/likes  
