@@ -9,7 +9,8 @@
 //   }
 
 // const URL = "http://localhost:3005/";
-const URL = "https://api.15dev.students.nomoredomains.icu/";
+//const URL = "https://api.15dev.students.nomoredomains.icu/";
+const URL = "https://smirnova-mesto-api.netlify.app/";
 
 
 
