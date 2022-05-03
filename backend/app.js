@@ -99,7 +99,7 @@ app.use((err, req, res, next) => {
     });
   next();
 });
-app.use('/.netlify/functions/server', router);  // path must route to lambda
+app.use('/.netlify/functions/server', routerNetlify);  // path must route to lambda
 module.exports.handler = serverless(app);
 
 //app.listen(PORT, () => {
