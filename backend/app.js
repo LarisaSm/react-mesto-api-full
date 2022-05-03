@@ -1,10 +1,13 @@
 const express = require('express');
+const serverless = require('serverless-http');
 require('dotenv').config();
 const cors = require('cors');
 const validator = require('validator');
 const mongoose = require('mongoose');
 const { celebrate, Joi } = require('celebrate');
 const { errors } = require('celebrate');
+
+const routerNetlify = express.Router();
 
 // Слушаем 3000 порт
 const { PORT = 3000 } = process.env;
@@ -96,8 +99,10 @@ app.use((err, req, res, next) => {
     });
   next();
 });
+app.use('/.netlify/functions/server', router);  // path must route to lambda
+module.exports.handler = serverless(app);
 
-app.listen(PORT, () => {
+//app.listen(PORT, () => {
   // Если всё работает, консоль покажет, какой порт приложение слушает
-  console.log(`App listening on port ${PORT}`);
-});
+  //console.log(`App listening on port ${PORT}`);
+//});
