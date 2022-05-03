@@ -21,7 +21,9 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.7",
     "validator": "^13.6.0",
-    "winston": "^3.3.3"
+    "winston": "^3.3.3",
+    "netlify-lambda": "^0.4.0",
+    "serverless-http": "^1.6.0"
   },
   "devDependencies": {
     "eslint": "^7.27.0",
